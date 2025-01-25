@@ -1,0 +1,51 @@
+name: ci
+############################################################################################################
+# Dieser löst den Workflow aus, wenn Änderungen direkt in den Haupt-Branch (main) gepusht werden.
+############################################################################################################
+on:
+  push: 
+    branches:
+      - 'main'
+############################################################################################################
+# Ein Job wird innerhalb eines jobs-Blocks definiert und hat eine eindeutige ID als Schlüssel. 
+# Jeder Job enthält eine Spezifikation der Umgebung, der auszuführenden Schritte und optional 
+# Abhängigkeiten zu anderen Jobs.
+############################################################################################################
+jobs: 
+  docker: #job
+    name: build and release docker image #eindeutige ID 
+    runs-on: ubuntu-latest # Umgebung
+    steps: # Schritte
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          registry: amirmohammadi60
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: amirmohammadi60/ttd_frontend:${{ github.run_number }}  # tags: <deine-docker-repository>/<deine-image>:vesion oder tag
+
+  deploy: #job
+    name: deploy new image #eindeutige ID
+    needs: [docker]
+    runs-on: ubuntu-latest # Umgebung 
+    steps: # Schritte
+    - name: executing remote SSH commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: <deine-host-IP>
+        username: deploy
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |   # Nach jedem Deployment müssen zuerst die alten Container gestoppt und gelöscht werden, bevor neue Container erstellt werden.
+            docker stop ttd_frontend || true 
+            docker rm -f ttd_frontend || true
+            docker run -d --name ttd_frontend -p8080:80 amirmohammadi60/ttd_frontend:ver-1.${{ github.run_number }}
