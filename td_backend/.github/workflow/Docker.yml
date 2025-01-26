@@ -21,12 +21,21 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
       -
+#####################################################################################################################     
+# Dieser Schritt führt eine Anmeldung bei Docker Hub durch, um Docker-Images zu erstellen, zu pushen oder zu ziehen.
+# Es wird die offizielle GitHub Action "docker/login-action" verwendet.
+# Die Zugangsdaten (Benutzername und Token) werden sicher über GitHub Secrets verwaltet.
+#####################################################################################################################
         name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+##################################################################################################################
+# Dieser Schritt baut ein Docker-Image und pusht es anschließend in das angegebene Docker-Repository.
+# Es wird die GitHub Action "docker/build-push-action" in Version 3 verwendet.      
+##################################################################################################################
         name: Build and push
         uses: docker/build-push-action@v3
         with:
