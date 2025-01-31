@@ -10,7 +10,7 @@ const ObjectsToCsv = require('objects-to-csv')      // Wandlet CSV Zeilen in JSO
 /***************************************************************************************************
     Konfigurationen
 *****************************************************************************************************/
-const port = process.env.PORT || 3000               // Konfiguration des Webserver-Ports
+const port = process.env.PORT || 5000               // Konfiguration des Webserver-Ports
 let morgan = require('morgan')                      // http-zugriff logging auf der CLI
 let bodyParser = require('body-parser');            // einfacher handler für POST/PUT payloads
 const corsOptions = {                               // CORS-Optionen definieren
