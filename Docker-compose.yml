@@ -1,11 +1,14 @@
-
+#######################################################################################
+# Die docker-compose.yml definiert zwei Hauptservices: backend und frontend,
+# die gemeinsam in einer containerisierten Umgebung betrieben werden.
+########################################################################################
  services:
   backend:
     build:
       context: ./ttd-backend
       dockerfile: Dockerfile
     ports:
-      - "3000:3000" # Mappt den Port 3000 des Containers auf den Port 3000 des Hosts
+      - "5000:5000" # Mappt den Port 5000 des Containers auf den Port 5000 des Hosts
     environment:
       - FLASK_ENV=development # Beispiel für Umgebungsvariablen
     volumes:
@@ -17,7 +20,7 @@
       context: ./ttd-frontend
       dockerfile: Dockerfile
     ports:
-      - "5000:5000" # Mappt den Port 5000 des Containers auf den Port 5000 des Hosts
+      - "3000:3000" # Mappt den Port 5000 des Containers auf den Port 5000 des Hosts
     volumes:
       - ./ttd-frontend:/app
     depends_on:
