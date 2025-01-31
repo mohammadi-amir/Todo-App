@@ -1,15 +1,15 @@
 # Todo-App Übersicht
 
-Die Todo-App ist eine Anwendung zur Verwaltung von Aufgaben, bestehend aus einem Frontend und einem Backend. Das Projekt ist in zwei Hauptverzeichnisse unterteilt:
-
-  td_backend: Enthält den Backend-Code.
-  td_frontend: Enthält den Frontend-Code.
+Die Todo-App ist eine Anwendung zur Verwaltung von Aufgaben, bestehend aus einem Frontend und einem Backend. Das Projekt ist in zwei Hauptverzeichnisse unterteilt.
+   td_backend: Enthält den Backend-Code.
+   td_frontend: Enthält den Frontend-Code.
+Die Anwendung speichert Daten in einer CSV-Datei anstelle einer Datenbank.
 
 ## Voraussetzungen
 
 Stellen Sie sicher, dass die folgenden Softwarekomponenten auf Ihrem System installiert sind:
 
-  Docker
+  Docker,
   Docker Compose
 
 ## Installation und Ausführung
@@ -59,7 +59,7 @@ docker-compose.yml: Docker Compose-Datei zum Definieren und Verwalten der Docker
 ## Technologien
 
 ### Backend:
-  NodeJS, ExpressJS
+  NodeJS, 
 
 ### Frontend:
   HTML,
@@ -69,7 +69,5 @@ docker-compose.yml: Docker Compose-Datei zum Definieren und Verwalten der Docker
 ### Containerisierung:
   Docker
 
-Lizenz
 
-Dieses Projekt steht unter der MIT-Lizenz.
 
