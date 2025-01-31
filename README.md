@@ -1,8 +1,6 @@
 # Todo-App Übersicht
 
-Die Todo-App ist eine Anwendung zur Verwaltung von Aufgaben, bestehend aus einem Frontend und einem Backend. Das Projekt ist in zwei Hauptverzeichnisse unterteilt.
-   td_backend: Enthält den Backend-Code.
-   td_frontend: Enthält den Frontend-Code.
+Die Todo-App ist eine Anwendung zur Verwaltung von Aufgaben, bestehend aus einem Frontend und einem Backend. 
 Die Anwendung speichert Daten in einer CSV-Datei anstelle einer Datenbank.
 
 ## Voraussetzungen
