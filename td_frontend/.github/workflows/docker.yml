@@ -61,4 +61,4 @@ jobs:
         script: |   # Nach jedem Deployment müssen zuerst die alten Container gestoppt und gelöscht werden, bevor neue Container erstellt werden.
             docker stop ttd_frontend || true 
             docker rm -f ttd_frontend || true
-            docker run -d --name td_frontend -p8080:80 amirmohammadi60/td_frontend:ver-1.${{ github.run_number }}
+            docker run -d --name td_frontend -p80:80 amirmohammadi60/td_frontend:ver-1.${{ github.run_number }}
